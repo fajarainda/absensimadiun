@@ -1,115 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BUMN untuk Indonesia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bantuan Teknis - BUMN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #1e40af;
-      --secondary: #3b82f6;
-      --background: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-    }
-
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
     }
 
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: var(--card-bg);
-    }
-
-    header h1 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-
-    .nav {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .nav a {
-      text-decoration: none;
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      transition: 0.3s;
-      color: inherit;
-    }
-
-    .nav a:hover {
-      border-color: var(--secondary);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .nav svg {
-      width: 24px;
-      height: 24px;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .nav h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 3rem 0 2rem;
-    }
-
-    .events, .info {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-
-    .card h4 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: var(--muted);
+    main {
+      flex: 1;
     }
 
     footer {
@@ -119,112 +27,99 @@
       text-align: center;
     }
 
+    .footer-container {
+      max-width: 960px;
+      margin: auto;
+    }
+
     .footer-title {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      font-weight: 600;
       margin-bottom: 1rem;
     }
 
-    .contact {
+    .footer-desc {
+      font-size: 1rem;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-buttons {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 1rem;
     }
 
-    .contact a {
-      display: flex;
+    .contact-btn {
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 8px;
+      background: #1e40af;
+      color: white;
       text-decoration: none;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
       font-size: 0.9rem;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
 
-    .contact a:hover {
-      background: var(--secondary);
+    .contact-btn:hover {
+      background: #3b82f6;
+      transform: translateY(-2px);
     }
 
-    .contact svg {
-      width: 18px;
-      height: 18px;
+    .contact-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .footer-bottom {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       font-size: 0.85rem;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Portal BUMN Indonesia</h1>
-    <p>Sistem Informasi Terpadu untuk Kemajuan Bangsa</p>
-  </header>
+<main>
+  <!-- Kosongkan bagian utama (opsional) -->
+</main>
 
-  <main class="container">
-
-    <section class="nav">
-      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg><h3>Daftar Hadir</h3></a>
-      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2"/><path d="M5 13l2 2c2.76-2.76 7.24-2.76 10 0l2-2"/><path d="M9 17l2 2c.87-.87 2.13-.87 3 0l2-2"/></svg><h3>Informasi WiFi</h3></a>
-      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Safety Induction</h3></a>
-      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><h3>Jalur Evakuasi</h3></a>
-    </section>
-
-    <h2 class="section-title">Jadwal Kegiatan</h2>
-    <section class="events">
-      <div class="card">
-        <h4>15 Jul – Workshop Digitalisasi</h4>
-        <p>Auditorium | 09:00 - 16:00</p>
-      </div>
-      <div class="card">
-        <h4>20 Jul – Rapat Koordinasi</h4>
-        <p>Meeting Room | 10:00 - 12:00</p>
-      </div>
-      <div class="card">
-        <h4>25 Jul – Seminar Keselamatan</h4>
-        <p>Aula Serbaguna | 13:00 - 15:00</p>
-      </div>
-    </section>
-
-    <h2 class="section-title">Informasi Perusahaan</h2>
-    <section class="info">
-      <div class="card"><h4>Portal Resmi</h4><p>Akses informasi dan layanan digital.</p></div>
-      <div class="card"><h4>Visi & Misi</h4><p>Komitmen BUMN untuk kemajuan Indonesia.</p></div>
-      <div class="card"><h4>Kebijakan</h4><p>Standar operasional dan regulasi internal.</p></div>
-      <div class="card"><h4>Sertifikasi</h4><p>Standar mutu dan kualitas layanan.</p></div>
-    </section>
-
-  </main>
-
-  <footer>
+<footer>
+  <div class="footer-container">
     <h3 class="footer-title">Bantuan Teknis</h3>
-    <div class="contact">
-      <a href="https://wa.me/6281234567890" target="_blank" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A12 12 0 1 0 4.42 19.56l-1.3 4.22 4.35-1.14a12 12 0 0 0 13.05-19.16z"/></svg>
+    <p class="footer-desc">Jika Anda mengalami kendala teknis, silakan hubungi kami melalui salah satu kanal berikut:</p>
+
+    <div class="contact-buttons">
+      <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12c0 2.12.55 4.14 1.6 5.94L0 24l6.3-1.65a12.07 12.07 0 005.7 1.44c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 22c-1.71 0-3.39-.45-4.86-1.31l-.35-.2-3.74.98 1-3.64-.22-.37A9.91 9.91 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.28-7.72c-.28-.14-1.63-.8-1.88-.9s-.44-.14-.62.14c-.18.28-.72.9-.88 1.08-.16.18-.32.2-.6.06a8.05 8.05 0 01-2.37-1.46 8.8 8.8 0 01-1.64-2.04c-.17-.3-.02-.46.13-.6.14-.14.32-.36.48-.54.16-.18.22-.3.34-.5.12-.2.06-.38-.03-.54s-.62-1.5-.86-2.06c-.23-.56-.45-.48-.62-.5-.16-.02-.36-.02-.56-.02s-.52.08-.8.38c-.28.3-1.1 1.08-1.1 2.64s1.14 3.06 1.3 3.28c.16.22 2.2 3.36 5.34 4.72.74.32 1.32.5 1.78.64.75.24 1.43.2 1.96.12.6-.08 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.26-.2-.54-.34z"/></svg>
         WhatsApp
       </a>
-      <a href="mailto:support@bumn.co.id" target="_blank" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v16H4z"/><polyline points="22,6 12,13 2,6"/></svg>
+
+      <a href="mailto:support@bumn.co.id" class="contact-btn" target="_blank" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 012 2v1l-10 6L2 7V6a2 2 0 012-2zm0 4.236l8 4.8 8-4.8V18a2 2 0 01-2 2H6a2 2 0 01-2-2V8.236z"/></svg>
         Email
       </a>
-      <a href="https://instagram.com/bumn_indonesia" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.2"/><path d="M17.5 3H6.5A3.5 3.5 0 0 0 3 6.5v11A3.5 3.5 0 0 0 6.5 21h11a3.5 3.5 0 0 0 3.5-3.5v-11A3.5 3.5 0 0 0 17.5 3z"/><circle cx="18" cy="6" r="1"/></svg>
+
+      <a href="https://instagram.com/bumn_indonesia" class="contact-btn" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.96.24 2.41.405a4.6 4.6 0 011.68 1.092 4.6 4.6 0 011.092 1.68c.165.45.35 1.24.405 2.41.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.96-.405 2.41a4.6 4.6 0 01-1.092 1.68 4.6 4.6 0 01-1.68 1.092c-.45.165-1.24.35-2.41.405-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.96-.24-2.41-.405a4.6 4.6 0 01-1.68-1.092 4.6 4.6 0 01-1.092-1.68c-.165-.45-.35-1.24-.405-2.41C2.212 15.584 2.2 15.2 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.96.405-2.41a4.6 4.6 0 011.092-1.68A4.6 4.6 0 015.447 2.675c.45-.165 1.24-.35 2.41-.405C8.416 2.212 8.8 2.2 12 2.2zm0 1.8c-3.13 0-3.49.012-4.72.068-1.01.047-1.56.21-1.92.35a2.8 2.8 0 00-1.02.662 2.8 2.8 0 00-.662 1.02c-.14.36-.303.91-.35 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.047 1.01.21 1.56.35 1.92.143.38.353.73.662 1.02.29.31.64.52 1.02.662.36.14.91.303 1.92.35 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.047 1.56-.21 1.92-.35.38-.143.73-.353 1.02-.662.31-.29.52-.64.662-1.02.14-.36.303-.91.35-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.047-1.01-.21-1.56-.35-1.92a2.8 2.8 0 00-.662-1.02 2.8 2.8 0 00-1.02-.662c-.36-.14-.91-.303-1.92-.35-1.23-.056-1.59-.068-4.72-.068zm0 3.8a5.2 5.2 0 110 10.4 5.2 5.2 0 010-10.4zm0 1.8a3.4 3.4 0 100 6.8 3.4 3.4 0 000-6.8zm5.6-2.6a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
         Instagram
       </a>
-      <a href="https://t.me/bumn_helpdesk" target="_blank" aria-label="Telegram">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4L2 12l5.5 2L9 21l4-4 5 3z"/></svg>
+
+      <a href="https://t.me/bumn_helpdesk" class="contact-btn" target="_blank" aria-label="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M22 4.01L2.01 10.93c-.68.27-.66.64-.13.82l4.88 1.52 1.82 5.72c.24.75.37.9.74.9.37 0 .54-.17.75-.37l2.12-2.07 4.4 3.25c.8.44 1.38.21 1.58-.75l2.87-13.5c.26-1.04-.4-1.53-1.04-1.24z"/></svg>
         Telegram
       </a>
     </div>
+
     <div class="footer-bottom">
       &copy; 2025 BUMN Indonesia. Seluruh hak cipta dilindungi.
     </div>
-  </footer>
+  </div>
+</footer>
 
 </body>
 </html>
