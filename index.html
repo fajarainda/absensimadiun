@@ -1,803 +1,230 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUMN untuk Indonesia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1e40af;
-            --primary-dark: #1e3a8a;
-            --secondary-color: #3b82f6;
-            --accent-color: #fbbf24;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #64748b;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-accent: #f1f5f9;
-            --border-color: #e2e8f0;
-            --border-light: #f1f5f9;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* Header */
-        header {
-            background: var(--bg-primary);
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-secondary);
-            opacity: 0.5;
-            z-index: 1;
-        }
-
-        header .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo {
-            width: 140px;
-            height: auto;
-            margin: 0 auto 2.5rem;
-            display: block;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-        }
-
-        .logo-fallback {
-            margin: 0 auto 2.5rem;
-            display: none;
-        }
-
-        .logo-fallback h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .logo-fallback p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .hero-text {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* Navigation Menu */
-        .nav-section {
-            padding: 5rem 0;
-            background: var(--bg-primary);
-            position: relative;
-        }
-
-        .nav-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--border-light);
-        }
-
-        .nav-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .nav-item {
-            background: var(--bg-primary);
-            padding: 2.5rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .nav-item:hover::before {
-            opacity: 0.02;
-        }
-
-        .nav-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--secondary-color);
-        }
-
-        .nav-item > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-icon {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .nav-item:hover .nav-icon {
-            color: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        .nav-item h3 {
-            font-size: 1.375rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-item p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Event Section */
-        .event-section {
-            padding: 5rem 0;
-            background: var(--bg-accent);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-align: center;
-            margin-bottom: 3.5rem;
-            letter-spacing: -0.02em;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-        }
-
-        .event-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-        }
-
-        .event-card {
-            background: var(--bg-primary);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .event-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .event-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .event-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .event-date {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 1.25rem;
-            border-radius: 12px;
-            text-align: center;
-            min-width: 80px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .event-date .day {
-            display: block;
-            font-size: 1.75rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .event-date .month {
-            display: block;
-            font-size: 0.875rem;
-            opacity: 0.9;
-            margin-top: 0.25rem;
-            font-weight: 500;
-        }
-
-        .event-title {
-            font-size: 1.375rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .event-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .event-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .event-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .event-meta-item svg {
-            width: 18px;
-            height: 18px;
-            color: var(--primary-color);
-        }
-
-        /* Info Section */
-        .info-section {
-            padding: 5rem 0;
-            background: var(--bg-primary);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .info-item {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            transition: all 0.3s ease;
-            border-radius: 16px;
-            border: 1px solid transparent;
-        }
-
-        .info-item:hover {
-            transform: translateY(-2px);
-            background: var(--bg-secondary);
-            border-color: var(--border-color);
-        }
-
-        .info-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 1.5rem;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .info-item:hover .info-icon {
-            color: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        .info-item h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-
-        .info-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: #e2e8f0;
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            z-index: 1;
-        }
-
-        footer .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 2.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2rem;
-            background: var(--gradient-primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 0.95rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .contact-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #334155;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-
-            .hero-text {
-                font-size: 2.25rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .nav-menu {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .nav-item {
-                padding: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .event-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .event-card {
-                padding: 2rem;
-            }
-
-            .event-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .nav-menu {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .event-section {
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        .info-section {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* Scroll animations */
-        @media (prefers-reduced-motion: no-preference) {
-            .nav-item:nth-child(1) { animation-delay: 0.1s; }
-            .nav-item:nth-child(2) { animation-delay: 0.2s; }
-            .nav-item:nth-child(3) { animation-delay: 0.3s; }
-            .nav-item:nth-child(4) { animation-delay: 0.4s; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BUMN untuk Indonesia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e40af;
+      --secondary: #3b82f6;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+    }
+
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--card-bg);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .nav {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .nav a {
+      text-decoration: none;
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      transition: 0.3s;
+      color: inherit;
+    }
+
+    .nav a:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .nav h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 3rem 0 2rem;
+    }
+
+    .events, .info {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .contact a:hover {
+      background: var(--secondary);
+    }
+
+    .contact svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-bottom {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="logo-jasa-tirta.png" class="logo" alt="BUMN Logo" onerror="showLogoFallback()">
-            <div class="logo-fallback" id="logoFallback">
-                <h2>BUMN</h2>
-                <p>untuk Indonesia</p>
-            </div>
-            
-            <h1 class="hero-text">Portal BUMN Indonesia</h1>
-            <p class="hero-subtitle">Sistem Informasi Terpadu untuk Kemajuan Bangsa dan Kesejahteraan Masyarakat</p>
-        </div>
-    </header>
 
-    <main>
-        <section class="nav-section">
-            <div class="container">
-                <div class="nav-menu">
-                    <a href="#" class="nav-item" onclick="handleClick('daftar-hadir')">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-                        </svg>
-                        <h3>Daftar Hadir</h3>
-                        <p>Sistem presensi dan monitoring kehadiran karyawan dengan teknologi digital terkini</p>
-                    </a>
-                    
-                    <a href="#" class="nav-item" onclick="handleClick('info-wifi')">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9z"/>
-                            <path d="M5 13l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
-                            <path d="M9 17l2 2c.87-.87 2.13-.87 3 0l2-2C14.12 15.12 9.88 15.12 9 17z"/>
-                        </svg>
-                        <h3>Informasi WiFi</h3>
-                        <p>Akses jaringan internet dan koneksi perusahaan yang aman dan terpercaya</p>
-                    </a>
-                    
-                    <a href="#" class="nav-item" onclick="handleClick('safety-induction')">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                        <h3>Safety Induction</h3>
-                        <p>Panduan keselamatan kerja dan protokol standar berstandar internasional</p>
-                    </a>
-                    
-                    <a href="#" class="nav-item" onclick="handleClick('jalur-evakuasi')">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                            <polyline points="16,17 21,12 16,7"/>
-                            <line x1="21" y1="12" x2="9" y2="12"/>
-                        </svg>
-                        <h3>Jalur Evakuasi</h3>
-                        <p>Rute darurat dan prosedur evakuasi keselamatan untuk situasi kritis</p>
-                    </a>
-                </div>
-            </div>
-        </section>
+  <header>
+    <h1>Portal BUMN Indonesia</h1>
+    <p>Sistem Informasi Terpadu untuk Kemajuan Bangsa</p>
+  </header>
 
-        <section class="event-section">
-            <div class="container">
-                <h2 class="section-title">Jadwal Kegiatan</h2>
-                <div class="event-grid">
-                    <div class="event-card">
-                        <div class="event-header">
-                            <div class="event-date">
-                                <span class="day">15</span>
-                                <span class="month">Jul</span>
-                            </div>
-                            <div>
-                                <h3 class="event-title">Workshop Digitalisasi</h3>
-                            </div>
-                        </div>
-                        <p class="event-description">Transformasi digital untuk menghadapi era industri 4.0 dengan implementasi teknologi terdepan dan inovasi berkelanjutan untuk meningkatkan efisiensi operasional</p>
-                        <div class="event-meta">
-                            <div class="event-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                Auditorium Utama
-                            </div>
-                            <div class="event-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12,6 12,12 16,14"/>
-                                </svg>
-                                09:00 - 16:00 WIB
-                            </div>
-                        </div>
-                    </div>
+  <main class="container">
 
-                    <div class="event-card">
-                        <div class="event-header">
-                            <div class="event-date">
-                                <span class="day">20</span>
-                                <span class="month">Jul</span>
-                            </div>
-                            <div>
-                                <h3 class="event-title">Rapat Koordinasi</h3>
-                            </div>
-                        </div>
-                        <p class="event-description">Evaluasi kinerja semester pertama dan perencanaan strategis periode mendatang untuk mencapai target organisasi yang telah ditetapkan</p>
-                        <div class="event-meta">
-                            <div class="event-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                Ruang Meeting Utama
-                            </div>
-                            <div class="event-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12,6 12,12 16,14"/>
-                                </svg>
-                                10:00 - 12:00 WIB
-                            </div>
-                        </div>
-                    </div>
+    <section class="nav">
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg><h3>Daftar Hadir</h3></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2"/><path d="M5 13l2 2c2.76-2.76 7.24-2.76 10 0l2-2"/><path d="M9 17l2 2c.87-.87 2.13-.87 3 0l2-2"/></svg><h3>Informasi WiFi</h3></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Safety Induction</h3></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><h3>Jalur Evakuasi</h3></a>
+    </section>
 
-                    <div class="event-card">
-                        <div class="event-header">
-                            <div class="event-date">
-                                <span class="day">25</span>
-                                <span class="month">Jul</span>
-                            </div>
-                            <div>
-                                <h3 class="event-title">Seminar Keselamatan</h3>
-                            </div>
-                        </div>
-                        <p class="event-description">Sosialisasi protokol keselamatan terbaru berstandar internasional dengan fokus pada pencegahan risiko dan budaya kerja yang aman</p>
-                        <div class="event-meta">
-                            <div class="event-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                Aula Serbaguna
-                            </div>
-                            <div class="event-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12,6 12,12 16,14"/>
-                                </svg>
-                                13:00 - 15:00 WIB
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <h2 class="section-title">Jadwal Kegiatan</h2>
+    <section class="events">
+      <div class="card">
+        <h4>15 Jul – Workshop Digitalisasi</h4>
+        <p>Auditorium | 09:00 - 16:00</p>
+      </div>
+      <div class="card">
+        <h4>20 Jul – Rapat Koordinasi</h4>
+        <p>Meeting Room | 10:00 - 12:00</p>
+      </div>
+      <div class="card">
+        <h4>25 Jul – Seminar Keselamatan</h4>
+        <p>Aula Serbaguna | 13:00 - 15:00</p>
+      </div>
+    </section>
 
-        <section class="info-section">
-            <div class="container">
-                <h2 class="section-title">Informasi Perusahaan</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                            <line x1="9" y1="9" x2="9.01" y2="9"/>
-                            <line x1="15" y1="9" x2="15.01" y2="9"/>
-                        </svg>
-                        <h3>Portal Resmi</h3>
-                        <p>Akses informasi terkini dan layanan digital terpadu untuk kemudahan operasional</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4"/>
-                            <polyline points="9,11 12,14 15,11"/>
-                            <path d="M12 14V2"/>
-                        </svg>
-                        <h3>Visi & Misi</h3>
-                        <p>Tujuan strategis dan komitmen perusahaan untuk kemajuan Indonesia yang berkelanjutan</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14,2 14,8 20,8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10,9 9,9 8,9"/>
-                        </svg>
-                        <h3>Kebijakan</h3>
-                        <p>Regulasi dan standar operasional yang berlaku sesuai dengan praktik terbaik industri</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22,4 12,14.01 9,11.01"/>
-                        </svg>
-                        <h3>Sertifikasi</h3>
-                        <p>Standar kualitas dan keunggulan bersertifikat internasional untuk layanan terbaik</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <h2 class="section-title">Informasi Perusahaan</h2>
+    <section class="info">
+      <div class="card"><h4>Portal Resmi</h4><p>Akses informasi dan layanan digital.</p></div>
+      <div class="card"><h4>Visi & Misi</h4><p>Komitmen BUMN untuk kemajuan Indonesia.</p></div>
+      <div class="card"><h4>Kebijakan</h4><p>Standar operasional dan regulasi internal.</p></div>
+      <div class="card"><h4>Sertifikasi</h4><p>Standar mutu dan kualitas layanan.</p></div>
+    </section>
 
-    <footer>
-    <div class="container">
-        <h3 class="footer-title">Bantuan Teknis</h3>
-        <p style="margin-bottom: 1.5rem; color: #cbd5e1; font-size: 1rem;">
-            Jika Anda mengalami kendala teknis, silakan hubungi kami melalui salah satu kanal berikut:
-        </p>
-        <div class="contact-buttons">
-            <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank" aria-label="WhatsApp">
-                <img src="whatsapp.svg" alt="WhatsApp" style="width: 20px; height: 20px;">
-                WhatsApp
-            </a>
-            <a href="mailto:support@bumn.co.id" class="contact-btn" target="_blank" aria-label="Email">
-                <img src="email.svg" alt="Email" style="width: 20px; height: 20px;">
-                Email
-            </a>
-            <a href="https://instagram.com/bumn_indonesia" class="contact-btn" target="_blank" aria-label="Instagram">
-                <img src="instagram.svg" alt="Instagram" style="width: 20px; height: 20px;">
-                Instagram
-            </a>
-            <a href="https://t.me/bumn_helpdesk" class="contact-btn" target="_blank" aria-label="Telegram">
-                <img src="telegram.svg" alt="Telegram" style="width: 20px; height: 20px;">
-                Telegram
-            </a>
-        </div>
+  </main>
 
-        <div class="footer-bottom">
-            &copy; 2025 BUMN Indonesia. Seluruh hak cipta dilindungi.
-        </div>
+  <footer>
+    <h3 class="footer-title">Bantuan Teknis</h3>
+    <div class="contact">
+      <a href="https://wa.me/6281234567890" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A12 12 0 1 0 4.42 19.56l-1.3 4.22 4.35-1.14a12 12 0 0 0 13.05-19.16z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:support@bumn.co.id" target="_blank" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v16H4z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://instagram.com/bumn_indonesia" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.2"/><path d="M17.5 3H6.5A3.5 3.5 0 0 0 3 6.5v11A3.5 3.5 0 0 0 6.5 21h11a3.5 3.5 0 0 0 3.5-3.5v-11A3.5 3.5 0 0 0 17.5 3z"/><circle cx="18" cy="6" r="1"/></svg>
+        Instagram
+      </a>
+      <a href="https://t.me/bumn_helpdesk" target="_blank" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4L2 12l5.5 2L9 21l4-4 5 3z"/></svg>
+        Telegram
+      </a>
     </div>
-</footer>
+    <div class="footer-bottom">
+      &copy; 2025 BUMN Indonesia. Seluruh hak cipta dilindungi.
+    </div>
+  </footer>
+
+</body>
+</html>
