@@ -3,168 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portal BUMN Indonesia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Portal BUMN Indonesia - Sistem Informasi Terpadu</title>
+  <link rel="icon" href="favicon.ico" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f1f5f9;
-      color: #0f172a;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background-color: #1e3a8a;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .logo svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-    }
-
-    .logo-text {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    main {
-      flex: 1;
-      padding: 2rem 1rem;
-      max-width: 960px;
-      margin: auto;
-    }
-
-    .main-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: #1e293b;
-    }
-
-    .main-desc {
-      font-size: 1rem;
-      color: #475569;
-      line-height: 1.6;
-    }
-
-    footer {
-      background: #0f172a;
-      color: #cbd5e1;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    .footer-container {
-      max-width: 960px;
-      margin: auto;
-    }
-
-    .footer-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .footer-desc {
-      font-size: 1rem;
-      color: #94a3b8;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #1e40af;
-      color: white;
-      text-decoration: none;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-
-    .contact-btn:hover {
-      background: #3b82f6;
-      transform: translateY(-2px);
-    }
-
-    .contact-btn img {
-      width: 20px;
-      height: 20px;
-    }
-
-    .footer-bottom {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: #94a3b8;
-    }
+    /* PASTE FULL CSS HERE (Sudah kamu punya) */
   </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
-    <div class="logo-text">BUMN Indonesia</div>
-  </div>
-</header>
-
-<main>
-  <h1 class="main-title">Selamat Datang di Portal BUMN</h1>
-  <p class="main-desc">
-    Portal ini menyediakan informasi penting dan layanan digital bagi seluruh pegawai dan mitra BUMN di Indonesia.
-    Anda dapat mengakses berbagai informasi, bantuan teknis, dan layanan lainnya melalui menu dan tautan yang tersedia.
-  </p>
-</main>
-
-<footer>
-  <div class="footer-container">
-    <h3 class="footer-title">Bantuan Teknis</h3>
-    <p class="footer-desc">Jika Anda mengalami kendala teknis, silakan hubungi kami melalui salah satu kanal berikut:</p>
-
-    <div class="contact-buttons">
-      <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank" aria-label="WhatsApp">
-        <img src="whatsapp.svg" alt="WhatsApp"> WhatsApp
-      </a>
-      <a href="mailto:support@bumn.co.id" class="contact-btn" target="_blank" aria-label="Email">
-        <img src="email.svg" alt="Email"> Email
-      </a>
-      <a href="https://instagram.com/bumn_indonesia" class="contact-btn" target="_blank" aria-label="Instagram">
-        <img src="instagram.svg" alt="Instagram"> Instagram
-      </a>
-      <a href="https://t.me/bumn_helpdesk" class="contact-btn" target="_blank" aria-label="Telegram">
-        <img src="telegram.svg" alt="Telegram"> Telegram
-      </a>
-    </div>
-
-    <div class="footer-bottom">
-      &copy; 2025 BUMN Indonesia. Seluruh hak cipta dilindungi.
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Portal BUMN Indonesia</div>
+      <div class="loading-subtitle">Memuat sistem informasi...</div>
     </div>
   </div>
-</footer>
 
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    <div class="notification-title">Selamat Datang!</div>
+    <div class="notification-message">Sistem berhasil dimuat</div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-bg"></div>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <img src="logo-jasa-tirta.png" class="logo" alt="BUMN Logo" onerror="showLogoFallback()">
+          <div class="logo-fallback hidden" id="logoFallback">
+            <h2>BUMN</h2>
+            <p>untuk Indonesia</p>
+          </div>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-text">Portal BUMN Indonesia</h1>
+          <p class="hero-subtitle">Sistem Informasi Terpadu untuk Transformasi Digital Indonesia</p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">142</span>
+              <span class="stat-label">BUMN Aktif</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4.8M</span>
+              <span class="stat-label">Karyawan</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Layanan Digital -->
+    <section class="nav-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Layanan Digital</h2>
+          <p class="section-description">Akses mudah ke seluruh sistem informasi dan layanan digital BUMN Indonesia</p>
+        </div>
+        <div class="nav-menu">
+          <a href="#" class="nav-item" onclick="handleClick('daftar-hadir')">
+            <div class="nav-item-badge">Live</div>
+            <div class="nav-item-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <path d="M12 11h4"/>
+                <path d="M12 16h4"/>
+              </svg>
+              <h3>Daftar Hadir Digital</h3>
+              <p>Sistem presensi berbasis biometrik dan monitoring real-time</p>
+            </div>
+          </a>
+          <a href="#" class="nav-item" onclick="handleClick('info-wifi')">
+            <div class="nav-item-badge">Secure</div>
+            <div class="nav-item-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                <line x1="12" y1="20" x2="12.01" y2="20"/>
+              </svg>
+              <h3>Jaringan WiFi Enterprise</h3>
+              <p>Koneksi cepat dan aman dengan monitoring bandwidth</p>
+            </div>
+          </a>
+          <a href="#" class="nav-item" onclick="handleClick('safety-induction')">
+            <div class="nav-item-badge">Required</div>
+            <div class="nav-item-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+              <h3>Safety Induction System</h3>
+              <p>Pembelajaran keselamatan kerja terintegrasi sertifikat</p>
+            </div>
+          </a>
+          <a href="#" class="nav-item" onclick="handleClick('jalur-evakuasi')">
+            <div class="nav-item-badge">New</div>
+            <div class="nav-item-content">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l9 4.5v6c0 5-3 9-9 11-6-2-9-6-9-11v-6L12 2z"/>
+                <path d="M12 12v6"/>
+                <path d="M9 15h6"/>
+              </svg>
+              <h3>Jalur Evakuasi Digital</h3>
+              <p>Panduan evakuasi lokasi real-time dan peta interaktif</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Access -->
+    <section class="quick-access">
+      <div class="container">
+        <div class="quick-access-content">
+          <h2>Akses Cepat</h2>
+          <p>Gunakan tombol berikut untuk terhubung langsung ke layanan prioritas BUMN</p>
+          <div class="quick-buttons">
+            <a href="https://wa.me/6281234567890" class="quick-btn" target="_blank">WhatsApp</a>
+            <a href="mailto:info@bumn.go.id" class="quick-btn">Email</a>
+            <a href="https://www.bumn.go.id" class="quick-btn" target="_blank">Website Resmi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>Tentang Portal BUMN</h3>
+          <p>Portal resmi untuk mengakses sistem informasi digital BUMN dalam satu platform terpadu.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Kontak</h3>
+          <p>Jl. Medan Merdeka Selatan No. 13, Jakarta Pusat</p>
+          <p>Email: info@bumn.go.id</p>
+          <p>Telp: (021) 12345678</p>
+          <div class="contact-buttons">
+            <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank" aria-label="Whatsapp">WhatsApp</a>
+            <a href="https://facebook.com" class="contact-btn" target="_blank" aria-label="Facebook">Facebook</a>
+            <a href="https://instagram.com" class="contact-btn" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://t.me/portalbumn" class="contact-btn" target="_blank" aria-label="Telegram">Telegram</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Portal BUMN Indonesia. Semua hak dilindungi.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loadingScreen');
+      const notification = document.getElementById('notification');
+      loadingScreen.style.opacity = 0;
+      setTimeout(() => loadingScreen.style.display = 'none', 500);
+      setTimeout(() => notification.classList.add('show'), 800);
+      setTimeout(() => notification.classList.remove('show'), 5000);
+    });
+
+    function showLogoFallback() {
+      document.querySelector('.logo').style.display = 'none';
+      document.getElementById('logoFallback').classList.remove('hidden');
+    }
+
+    function handleClick(menu) {
+      alert('Fitur "' + menu + '" belum tersedia.');
+    }
+  </script>
 </body>
 </html>
