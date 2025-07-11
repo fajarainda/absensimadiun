@@ -28,34 +28,56 @@
         header {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.05)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
         }
 
         .logo {
-            max-width: 300px;
+            max-width: 200px;
             height: auto;
             margin: 0 auto 2rem;
             display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            z-index: 1;
+            position: relative;
         }
 
         .logo-fallback {
             text-align: center;
             margin: 0 auto 2rem;
+            z-index: 1;
+            position: relative;
         }
 
         .hero-text {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            z-index: 1;
+            position: relative;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
             margin-bottom: 2rem;
+            z-index: 1;
+            position: relative;
         }
 
         /* Navigation Menu */
@@ -63,150 +85,117 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
 
         .nav-item {
-            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
-            color: white;
+            background: #ffffff;
+            color: #333;
             padding: 1.5rem;
-            border-radius: 15px;
+            border-radius: 12px;
             text-decoration: none;
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .nav-item:hover::before {
-            left: 100%;
+            border: 2px solid transparent;
         }
 
         .nav-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(23, 162, 184, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #17a2b8;
+        }
+
+        .nav-icon-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover .nav-icon {
+            transform: scale(1.1);
         }
 
         .nav-item h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
         }
 
         .nav-item p {
             font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Navigation Icons */
-        .nav-icon {
-            width: 40px;
-            height: 40px;
-            margin: 0 auto 1rem;
-            display: block;
-        }
-
-        .nav-icon-fallback {
-            font-size: 2rem;
-            display: none;
-            margin-bottom: 1rem;
-        }
-
-        .nav-item img[style*="display: none"] ~ .nav-icon-fallback {
-            display: block;
-        }
-
-        /* Info Icons */
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            margin: 0 auto 1rem;
-            display: block;
-        }
-
-        .info-icon-fallback {
-            font-size: 2rem;
-            display: none;
-            margin-bottom: 1rem;
-        }
-
-        .info-item img[style*="display: none"] ~ .info-icon-fallback {
-            display: block;
+            color: #6c757d;
+            line-height: 1.4;
         }
 
         /* Event Section */
         .event-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 3rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top: 4px solid #17a2b8;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 4rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 3px solid #17a2b8;
         }
 
         .section-title {
             color: #2c3e50;
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #17a2b8;
+            border-radius: 2px;
         }
 
         .event-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
         .event-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
+            background: #ffffff;
+            border-radius: 12px;
             padding: 1.5rem;
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(23, 162, 184, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .event-card:hover::before {
-            left: 100%;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         .event-card:hover {
-            transform: translateY(-5px);
-            border-color: #17a2b8;
-            box-shadow: 0 10px 25px rgba(23, 162, 184, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .event-date {
-            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            background: #17a2b8;
             color: white;
             padding: 1rem;
-            border-radius: 10px;
+            border-radius: 8px;
             text-align: center;
             min-width: 80px;
             height: fit-content;
@@ -223,6 +212,7 @@
             display: block;
             font-size: 0.9rem;
             opacity: 0.9;
+            margin-top: 0.3rem;
         }
 
         .event-info {
@@ -231,14 +221,16 @@
 
         .event-info h3 {
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .event-info p {
             color: #6c757d;
             margin-bottom: 1rem;
             font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .event-meta {
@@ -251,55 +243,82 @@
             font-size: 0.8rem;
             color: #17a2b8;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-meta .time img {
+            width: 16px;
+            height: 16px;
         }
 
         /* Info Container */
         .info-container {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 3rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top: 4px solid #17a2b8;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 4rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 3px solid #17a2b8;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
         }
 
         .info-item {
             text-align: center;
             padding: 1.5rem;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            background: #ffffff;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         .info-item:hover {
             transform: translateY(-3px);
-            border-color: #17a2b8;
-            box-shadow: 0 5px 20px rgba(23, 162, 184, 0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .info-icon-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover .info-icon {
+            transform: scale(1.1);
         }
 
         .info-item h3 {
             color: #2c3e50;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .info-item p {
             color: #6c757d;
             font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         /* Footer */
         footer {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
             margin-top: 4rem;
         }
@@ -310,8 +329,9 @@
 
         .footer-title {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: #17a2b8;
+            font-weight: 600;
         }
 
         .contact-buttons {
@@ -326,27 +346,31 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            background: #17a2b8;
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 8px;
             transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .contact-btn.telegram {
-            background: linear-gradient(135deg, #0088cc 0%, #005fa3 100%);
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
         .contact-btn:hover {
+            background: #138496;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn img {
+            width: 20px;
+            height: 20px;
         }
 
         .footer-bottom {
             border-top: 1px solid #495057;
-            padding-top: 1rem;
-            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
             opacity: 0.8;
         }
 
@@ -357,11 +381,11 @@
             }
 
             .hero-text {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .nav-menu {
@@ -373,12 +397,8 @@
                 padding: 1.2rem;
             }
 
-            .nav-item h3 {
-                font-size: 1.1rem;
-            }
-
             .section-title {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .event-grid {
@@ -395,17 +415,8 @@
                 margin-bottom: 1rem;
             }
 
-            .event-meta {
-                align-items: center;
-            }
-
             .info-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1rem;
-            }
-
-            .info-item {
-                padding: 1rem;
             }
             
             .contact-buttons {
@@ -422,15 +433,11 @@
 
         @media (max-width: 480px) {
             .hero-text {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .nav-menu {
                 grid-template-columns: 1fr;
-            }
-
-            .nav-item {
-                padding: 1rem;
             }
 
             .event-section, .info-container {
@@ -439,23 +446,15 @@
             }
 
             .section-title {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
             }
 
             .event-card {
-                padding: 1rem;
+                padding: 1.2rem;
             }
 
             .info-item {
-                padding: 1rem;
-            }
-
-            .info-item h3 {
-                font-size: 1rem;
-            }
-
-            .info-item p {
-                font-size: 0.8rem;
+                padding: 1.2rem;
             }
         }
 
@@ -478,15 +477,19 @@
         .info-container {
             animation: fadeInUp 0.8s ease-out;
         }
+
+        .event-section {
+            animation: fadeInUp 0.7s ease-out;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <img src="logo-bumn.png" alt="Logo BUMN" class="logo" onerror="showLogoFallback()">
+            <img src="logo-jasa-tirta.png" class="logo" alt="BUMN Logo" onerror="showLogoFallback()">
             <div class="logo-fallback" id="logoFallback" style="display:none;">
-                <h2 style="color: #17a2b8; font-size: 3rem; margin: 0;">BUMN</h2>
-                <p style="color: white; font-size: 1.2rem; margin: 0;">untuk Indonesia</p>
+                <h2 style="color: #17a2b8; font-size: 2.5rem; margin: 0;">BUMN</h2>
+                <p style="color: white; font-size: 1rem; margin: 0;">untuk Indonesia</p>
             </div>
             
             <h1 class="hero-text">Selamat Datang</h1>
@@ -499,8 +502,7 @@
             <div class="nav-menu">
                 <a href="#" class="nav-item" onclick="handleClick('daftar-hadir')">
                     <div class="nav-icon-container">
-                        <img src="icons/attendance.png" alt="Daftar Hadir" class="nav-icon" onerror="showIconFallback(this, '📋')">
-                        <span class="nav-icon-fallback" style="display:none;">📋</span>
+                        <img src="attendance.png" alt="Daftar Hadir" class="nav-icon">
                     </div>
                     <h3>Daftar Hadir</h3>
                     <p>Sistem absensi dan presensi karyawan</p>
@@ -508,8 +510,7 @@
                 
                 <a href="#" class="nav-item" onclick="handleClick('info-wifi')">
                     <div class="nav-icon-container">
-                        <img src="icons/wifi.png" alt="WiFi" class="nav-icon" onerror="showIconFallback(this, '📶')">
-                        <span class="nav-icon-fallback" style="display:none;">📶</span>
+                        <img src="wifi.png" alt="WiFi" class="nav-icon">
                     </div>
                     <h3>Informasi WiFi</h3>
                     <p>Akses jaringan internet perusahaan</p>
@@ -517,17 +518,15 @@
                 
                 <a href="#" class="nav-item" onclick="handleClick('safety-induction')">
                     <div class="nav-icon-container">
-                        <img src="icons/safety.png" alt="Safety" class="nav-icon" onerror="showIconFallback(this, '🛡️')">
-                        <span class="nav-icon-fallback" style="display:none;">🛡️</span>
+                        <img src="safety.png" alt="Safety" class="nav-icon">
                     </div>
                     <h3>Safety Induction</h3>
-                    <p>Panduan keselamatan kerja</p>
+                    <p>Panduan keselamatan kerja komprehensif</p>
                 </a>
                 
                 <a href="#" class="nav-item" onclick="handleClick('jalur-evakuasi')">
                     <div class="nav-icon-container">
-                        <img src="icons/evacuation.png" alt="Evakuasi" class="nav-icon" onerror="showIconFallback(this, '🚪')">
-                        <span class="nav-icon-fallback" style="display:none;">🚪</span>
+                        <img src="evacuation.png" alt="Evakuasi" class="nav-icon">
                     </div>
                     <h3>Jalur Evakuasi</h3>
                     <p>Rute darurat dan titik kumpul</p>
@@ -536,7 +535,7 @@
 
             <!-- Event Information Section -->
             <div class="event-section">
-                <h2 class="section-title">📅 Informasi Acara</h2>
+                <h2 class="section-title">Informasi Acara</h2>
                 <div class="event-grid">
                     <div class="event-card">
                         <div class="event-date">
@@ -545,10 +544,17 @@
                         </div>
                         <div class="event-info">
                             <h3>Workshop Digitalisasi</h3>
-                            <p>Pelatihan transformasi digital untuk seluruh karyawan</p>
+                            <p>Pelatihan transformasi digital untuk seluruh karyawan dalam menghadapi era industri 4.0</p>
                             <div class="event-meta">
-                                <span class="time">📍 Auditorium Utama</span>
-                                <span class="time">🕐 09:00 - 16:00</span>
+                                <span class="time">
+                                    <img src="location.png" alt="Lokasi"> Auditorium Utama
+                                </span>
+                                <span class="time">
+                                    <img src="clock.png" alt="Waktu"> 09:00 - 16:00
+                                </span>
+                                <span class="time">
+                                    <img src="people.png" alt="Peserta"> Kapasitas: 150 peserta
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -560,10 +566,17 @@
                         </div>
                         <div class="event-info">
                             <h3>Rapat Koordinasi</h3>
-                            <p>Evaluasi kinerja semester pertama 2025</p>
+                            <p>Evaluasi kinerja semester pertama 2025 dan perencanaan strategi ke depan</p>
                             <div class="event-meta">
-                                <span class="time">📍 Ruang Meeting</span>
-                                <span class="time">🕐 10:00 - 12:00</span>
+                                <span class="time">
+                                    <img src="location.png" alt="Lokasi"> Ruang Meeting Utama
+                                </span>
+                                <span class="time">
+                                    <img src="clock.png" alt="Waktu"> 10:00 - 12:00
+                                </span>
+                                <span class="time">
+                                    <img src="people.png" alt="Peserta"> Manajemen & Kepala Divisi
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -575,10 +588,17 @@
                         </div>
                         <div class="event-info">
                             <h3>Seminar Keselamatan</h3>
-                            <p>Sosialisasi protokol keselamatan kerja terbaru</p>
+                            <p>Sosialisasi protokol keselamatan kerja terbaru dan standar internasional</p>
                             <div class="event-meta">
-                                <span class="time">📍 Aula Serbaguna</span>
-                                <span class="time">🕐 13:00 - 15:00</span>
+                                <span class="time">
+                                    <img src="location.png" alt="Lokasi"> Aula Serbaguna
+                                </span>
+                                <span class="time">
+                                    <img src="clock.png" alt="Waktu"> 13:00 - 15:00
+                                </span>
+                                <span class="time">
+                                    <img src="people.png" alt="Peserta"> Seluruh Karyawan
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -586,11 +606,11 @@
             </div>
 
             <div class="info-container">
+                <h2 class="section-title">Informasi Perusahaan</h2>
                 <div class="info-grid">
                     <div class="info-item">
                         <div class="info-icon-container">
-                            <img src="icons/website.png" alt="Website" class="info-icon" onerror="showIconFallback(this, '🌐')">
-                            <span class="info-icon-fallback" style="display:none;">🌐</span>
+                            <img src="website.png" alt="Website" class="info-icon">
                         </div>
                         <h3>Official Website</h3>
                         <p>Kunjungi situs resmi untuk informasi terbaru dan layanan online</p>
@@ -598,8 +618,7 @@
                     
                     <div class="info-item">
                         <div class="info-icon-container">
-                            <img src="icons/vision.png" alt="Visi Misi" class="info-icon" onerror="showIconFallback(this, '🎯')">
-                            <span class="info-icon-fallback" style="display:none;">🎯</span>
+                            <img src="vision.png" alt="Visi Misi" class="info-icon">
                         </div>
                         <h3>Visi Misi</h3>
                         <p>Mengenal lebih dalam tentang tujuan dan komitmen perusahaan</p>
@@ -607,17 +626,15 @@
                     
                     <div class="info-item">
                         <div class="info-icon-container">
-                            <img src="icons/policy.png" alt="Kebijakan" class="info-icon" onerror="showIconFallback(this, '📜')">
-                            <span class="info-icon-fallback" style="display:none;">📜</span>
+                            <img src="policy.png" alt="Kebijakan" class="info-icon">
                         </div>
                         <h3>Kebijakan</h3>
-                        <p>Peraturan dan standar operasional perusahaan</p>
+                        <p>Peraturan dan standar operasional perusahaan yang berlaku</p>
                     </div>
                     
                     <div class="info-item">
                         <div class="info-icon-container">
-                            <img src="icons/certificate.png" alt="Sertifikat" class="info-icon" onerror="showIconFallback(this, '🏆')">
-                            <span class="info-icon-fallback" style="display:none;">🏆</span>
+                            <img src="certificate.png" alt="Sertifikat" class="info-icon">
                         </div>
                         <h3>Sertifikat ISO</h3>
                         <p>Standar kualitas internasional yang telah diraih</p>
@@ -633,11 +650,11 @@
                 <h3 class="footer-title">Bantuan Teknis</h3>
                 <div class="contact-buttons">
                     <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank">
-                        <span>📱</span>
+                        <img src="whatsapp.svg" alt="WhatsApp">
                         WhatsApp Support
                     </a>
-                    <a href="https://t.me/bumn_support" class="contact-btn telegram" target="_blank">
-                        <span>✈️</span>
+                    <a href="https://t.me/bumn_support" class="contact-btn" target="_blank">
+                        <img src="telegram.svg" alt="Telegram">
                         Telegram Support
                     </a>
                 </div>
@@ -657,6 +674,15 @@
             // window.location.href = `/${section}.html`;
         }
 
+        function showLogoFallback() {
+            const logo = document.querySelector('.logo');
+            const logoFallback = document.querySelector('.logo-fallback');
+            if (logo && logoFallback) {
+                logo.style.display = 'none';
+                logoFallback.style.display = 'block';
+            }
+        }
+
         // Smooth scrolling untuk link internal
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -665,18 +691,20 @@
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth'
-                    // Handle logo error and show fallback
-        document.addEventListener('DOMContentLoaded', function() {
-            const logo = document.querySelector('.logo');
-            const logoFallback = document.querySelector('.logo-fallback');
-            
-            logo.addEventListener('error', function() {
-                logo.style.display = 'none';
-                logoFallback.style.display = 'block';
-            });
-        });
+                    });
                 }
             });
+        });
+
+        // Handle logo error dan show fallback
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            
+            if (logo) {
+                logo.addEventListener('error', function() {
+                    showLogoFallback();
+                });
+            }
         });
 
         // Animasi saat scroll
@@ -689,11 +717,13 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                    entry.target.style.animationFillMode = 'both';
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.nav-item, .info-item').forEach(el => {
+        // Observe elements untuk animasi
+        document.querySelectorAll('.nav-item, .info-item, .event-card').forEach(el => {
             observer.observe(el);
         });
     </script>
