@@ -1,191 +1,793 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portal BUMN Indonesia - Sistem Informasi Terpadu</title>
-  <link rel="icon" href="favicon.ico" />
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    /* PASTE FULL CSS HERE (Sudah kamu punya) */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Digital - Jasa Tirta 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #40e0d0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(64, 224, 208, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(42, 82, 152, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(30, 60, 114, 0.3);
+            position: relative;
+            overflow: hidden;
+            padding: 8px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .logo:hover::before {
+            left: 100%;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-name {
+            color: #1e3c72;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-subtitle {
+            color: #2a5298;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Primary Buttons */
+        .primary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .primary-button {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: none;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .primary-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05), rgba(64, 224, 208, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-button:hover::before {
+            opacity: 1;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .primary-button:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+
+        .button-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .button-icon img {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .primary-button:hover .button-icon img {
+            transform: scale(1.1);
+        }
+
+        .icon-attendance { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+        .icon-wifi { background: linear-gradient(135deg, #2a5298, #40e0d0); }
+        .icon-safety { background: linear-gradient(135deg, #40e0d0, #1e3c72); }
+        .icon-evacuation { background: linear-gradient(135deg, #1e3c72, #40e0d0); }
+
+        .button-text {
+            color: #1e3c72;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Secondary Section */
+        .secondary-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secondary-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3c72, #2a5298, #40e0d0);
+        }
+
+        .secondary-title {
+            color: #1e3c72;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .secondary-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2a5298, #40e0d0);
+            border-radius: 2px;
+        }
+
+        .secondary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .secondary-button {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #40e0d0 100%);
+            border: none;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(30, 60, 114, 0.3);
+        }
+
+        .secondary-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .secondary-button:hover::before {
+            left: 100%;
+        }
+
+        .secondary-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(30, 60, 114, 0.4);
+        }
+
+        .secondary-button:active {
+            transform: translateY(-2px) scale(0.95);
+        }
+
+        .secondary-button img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #40e0d0, #2a5298, #1e3c72);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #40e0d0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #40e0d0, #2a5298);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(64, 224, 208, 0.3);
+        }
+
+        .social-link img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+            z-index: 1;
+            position: relative;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+                    @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+                gap: 1rem;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+                padding: 6px;
+            }
+
+            .company-name {
+                font-size: 1.4rem;
+            }
+
+            .company-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .welcome-title {
+                font-size: 2rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+                gap: 2rem;
+            }
+
+            .primary-section {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .primary-button {
+                padding: 2rem 1.5rem;
+            }
+
+            .button-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .button-icon img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .secondary-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .secondary-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .secondary-button {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .footer {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social-links {
+                gap: 0.8rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .primary-section {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+
+            .secondary-button {
+                padding: 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loading-content">
-      <div class="loading-spinner"></div>
-      <div class="loading-text">Portal BUMN Indonesia</div>
-      <div class="loading-subtitle">Memuat sistem informasi...</div>
-    </div>
-  </div>
-
-  <!-- Notification -->
-  <div class="notification" id="notification">
-    <div class="notification-title">Selamat Datang!</div>
-    <div class="notification-message">Sistem berhasil dimuat</div>
-  </div>
-
-  <!-- Header -->
-  <header>
-    <div class="header-bg"></div>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo-section">
-          <img src="logo-jasa-tirta.png" class="logo" alt="BUMN Logo" onerror="showLogoFallback()">
-          <div class="logo-fallback hidden" id="logoFallback">
-            <h2>BUMN</h2>
-            <p>untuk Indonesia</p>
-          </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo-jasa-tirta.png" alt="Jasa Tirta 1 Logo">
         </div>
-        <div class="hero-content">
-          <h1 class="hero-text">Portal BUMN Indonesia</h1>
-          <p class="hero-subtitle">Sistem Informasi Terpadu untuk Transformasi Digital Indonesia</p>
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-number">142</span>
-              <span class="stat-label">BUMN Aktif</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">4.8M</span>
-              <span class="stat-label">Karyawan</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">24/7</span>
-              <span class="stat-label">Support</span>
-            </div>
-          </div>
+        <div class="company-info">
+            <h1 class="company-name">Jasa Tirta 1</h1>
+            <p class="company-subtitle">Sistem Absensi Digital</p>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main -->
-  <main>
-    <!-- Layanan Digital -->
-    <section class="nav-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Layanan Digital</h2>
-          <p class="section-description">Akses mudah ke seluruh sistem informasi dan layanan digital BUMN Indonesia</p>
-        </div>
-        <div class="nav-menu">
-          <a href="#" class="nav-item" onclick="handleClick('daftar-hadir')">
-            <div class="nav-item-badge">Live</div>
-            <div class="nav-item-content">
-              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-                <path d="M12 11h4"/>
-                <path d="M12 16h4"/>
-              </svg>
-              <h3>Daftar Hadir Digital</h3>
-              <p>Sistem presensi berbasis biometrik dan monitoring real-time</p>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h2 class="welcome-title">Selamat Datang</h2>
+            <p class="welcome-subtitle">Sistem absensi digital yang modern dan efisien untuk kemudahan akses informasi perusahaan</p>
+        </section>
+
+        <!-- Primary Buttons Section -->
+        <section class="primary-section">
+            <button class="primary-button loading" onclick="handleAttendance()" style="animation-delay: 0.1s">
+                <div class="button-icon icon-attendance">
+                    <img src="attendance-icon.png" alt="Daftar Hadir">
+                </div>
+                <span class="button-text">Daftar Hadir</span>
+            </button>
+            
+            <button class="primary-button loading" onclick="handleWifiInfo()" style="animation-delay: 0.2s">
+                <div class="button-icon icon-wifi">
+                    <img src="wifi-icon.png" alt="Informasi WiFi">
+                </div>
+                <span class="button-text">Informasi WiFi</span>
+            </button>
+            
+            <button class="primary-button loading" onclick="handleSafetyInduction()" style="animation-delay: 0.3s">
+                <div class="button-icon icon-safety">
+                    <img src="safety-icon.png" alt="Safety Induction">
+                </div>
+                <span class="button-text">Safety Induction</span>
+            </button>
+            
+            <button class="primary-button loading" onclick="handleEvacuation()" style="animation-delay: 0.4s">
+                <div class="button-icon icon-evacuation">
+                    <img src="evacuation-icon.png" alt="Jalur Evakuasi">
+                </div>
+                <span class="button-text">Jalur Evakuasi</span>
+            </button>
+        </section>
+
+        <!-- Secondary Section -->
+        <section class="secondary-section loading" style="animation-delay: 0.5s">
+            <h2 class="secondary-title">Informasi Perusahaan</h2>
+            <div class="secondary-grid">
+                <button class="secondary-button" onclick="handleOfficialWeb()">
+                    <img src="web-icon.png" alt="Official Web">
+                    Official Web
+                </button>
+                <button class="secondary-button" onclick="handleVisiMisi()">
+                    <img src="vision-icon.png" alt="Visi Misi">
+                    Visi Misi
+                </button>
+                <button class="secondary-button" onclick="handleKebijakan()">
+                    <img src="policy-icon.png" alt="Kebijakan">
+                    Kebijakan
+                </button>
+                <button class="secondary-button" onclick="handleSertifikat()">
+                    <img src="certificate-icon.png" alt="Sertifikat ISO">
+                    Sertifikat ISO
+                </button>
             </div>
-          </a>
-          <a href="#" class="nav-item" onclick="handleClick('info-wifi')">
-            <div class="nav-item-badge">Secure</div>
-            <div class="nav-item-content">
-              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
-                <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
-                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
-                <line x1="12" y1="20" x2="12.01" y2="20"/>
-              </svg>
-              <h3>Jaringan WiFi Enterprise</h3>
-              <p>Koneksi cepat dan aman dengan monitoring bandwidth</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kontak Bantuan Teknis</h3>
+                <div class="contact-item">
+                    <img src="phone.svg" alt="Telepon" class="contact-icon">
+                    <p>(0341) 551976</p>
+                </div>
+                <div class="contact-item">
+                    <img src="gnail.svg" alt="Email" class="contact-icon">
+                    <p>it-support@jasatirta1.co.id</p>
+                </div>
+                <div class="contact-item">
+                    <img src="whatsapp.svg" alt="Jam Kerja" class="contact-icon">
+                    <p>085888421865</p>
+                </div>
             </div>
-          </a>
-          <a href="#" class="nav-item" onclick="handleClick('safety-induction')">
-            <div class="nav-item-badge">Required</div>
-            <div class="nav-item-content">
-              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4"/>
-              </svg>
-              <h3>Safety Induction System</h3>
-              <p>Pembelajaran keselamatan kerja terintegrasi sertifikat</p>
+            
+            <div class="footer-section">
+                <h3>Sosial Media</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <img src="facebook.svg" alt="Facebook">
+                    </a>
+                    <a href="#" class="social-link">
+                        <img src="instagram.svg" alt="Instagram">
+                    </a>
+                    <a href="#" class="social-link">
+                        <img src="twitter.svg" alt="Twitter">
+                    </a>
+                    <a href="#" class="social-link">
+                        <img src="youtube.svg" alt="LinkedIn">
+                    </a>
+                </div>
             </div>
-          </a>
-          <a href="#" class="nav-item" onclick="handleClick('jalur-evakuasi')">
-            <div class="nav-item-badge">New</div>
-            <div class="nav-item-content">
-              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2l9 4.5v6c0 5-3 9-9 11-6-2-9-6-9-11v-6L12 2z"/>
-                <path d="M12 12v6"/>
-                <path d="M9 15h6"/>
-              </svg>
-              <h3>Jalur Evakuasi Digital</h3>
-              <p>Panduan evakuasi lokasi real-time dan peta interaktif</p>
-            </div>
-          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- Quick Access -->
-    <section class="quick-access">
-      <div class="container">
-        <div class="quick-access-content">
-          <h2>Akses Cepat</h2>
-          <p>Gunakan tombol berikut untuk terhubung langsung ke layanan prioritas BUMN</p>
-          <div class="quick-buttons">
-            <a href="https://wa.me/6281234567890" class="quick-btn" target="_blank">WhatsApp</a>
-            <a href="mailto:info@bumn.go.id" class="quick-btn">Email</a>
-            <a href="https://www.bumn.go.id" class="quick-btn" target="_blank">Website Resmi</a>
-          </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jasa Tirta 1. All rights reserved.</p>
         </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-grid">
-        <div class="footer-section">
-          <h3>Tentang Portal BUMN</h3>
-          <p>Portal resmi untuk mengakses sistem informasi digital BUMN dalam satu platform terpadu.</p>
-        </div>
-        <div class="footer-section">
-          <h3>Kontak</h3>
-          <p>Jl. Medan Merdeka Selatan No. 13, Jakarta Pusat</p>
-          <p>Email: info@bumn.go.id</p>
-          <p>Telp: (021) 12345678</p>
-          <div class="contact-buttons">
-            <a href="https://wa.me/6281234567890" class="contact-btn" target="_blank" aria-label="Whatsapp">WhatsApp</a>
-            <a href="https://facebook.com" class="contact-btn" target="_blank" aria-label="Facebook">Facebook</a>
-            <a href="https://instagram.com" class="contact-btn" target="_blank" aria-label="Instagram">Instagram</a>
-            <a href="https://t.me/portalbumn" class="contact-btn" target="_blank" aria-label="Telegram">Telegram</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2025 Portal BUMN Indonesia. Semua hak dilindungi.
-      </div>
-    </div>
-  </footer>
+    <script>
+        // Button handlers - Ganti URL sesuai kebutuhan
+        function handleAttendance() {
+            // Add loading state
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+                // Ganti URL ini dengan halaman daftar hadir
+                window.open('https://fajarainda.github.io/absensi/', '_blank');
+                // atau untuk membuka di tab yang sama: window.location.href = 'URL_ANDA';
+            }, 150);
+        }
 
-  <!-- JavaScript -->
-  <script>
-    window.addEventListener('load', () => {
-      const loadingScreen = document.getElementById('loadingScreen');
-      const notification = document.getElementById('notification');
-      loadingScreen.style.opacity = 0;
-      setTimeout(() => loadingScreen.style.display = 'none', 500);
-      setTimeout(() => notification.classList.add('show'), 800);
-      setTimeout(() => notification.classList.remove('show'), 5000);
-    });
+        function handleWifiInfo() {
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+                // Ganti URL ini dengan halaman informasi WiFi
+                window.open('https://fajarainda.github.io/password_wifi/', '_blank');
+            }, 150);
+        }
 
-    function showLogoFallback() {
-      document.querySelector('.logo').style.display = 'none';
-      document.getElementById('logoFallback').classList.remove('hidden');
-    }
+        function handleSafetyInduction() {
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+                // Ganti URL ini dengan halaman safety induction
+                window.open('https://drive.google.com/file/d/11Fa2QjmtUhamLnRE4AZp-nRhKGivzyYp/view?usp=sharing', '_blank');
+            }, 150);
+        }
 
-    function handleClick(menu) {
-      alert('Fitur "' + menu + '" belum tersedia.');
-    }
-  </script>
+        function handleEvacuation() {
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+                // Ganti URL ini dengan halaman jalur evakuasi
+                window.open('https://drive.google.com/file/d/1LIIYC7aIHPNN9QCkCvC2DAIQ4F9JmaAB/view?usp=sharing', '_blank');
+            }, 150);
+        }
+
+        function handleOfficialWeb() {
+            // Membuka website resmi Jasa Tirta 1
+            window.open('https://jasatirta1.co.id', '_blank');
+        }
+
+        function handleVisiMisi() {
+            // Ganti URL ini dengan halaman visi misi
+            window.open('https://drive.google.com/file/d/1rixZlY5BLpjcyPFVuxtVi6O1nUPUkW2c/view', '_blank');
+        }
+
+        function handleKebijakan() {
+            // Ganti URL ini dengan halaman kebijakan
+            window.open('https://drive.google.com/file/d/1TlHOKPWVO9Jz43utrT_LLgU9QWrDtilP/view', '_blank');
+        }
+
+        function handleSertifikat() {
+            // Ganti URL ini dengan halaman sertifikat ISO
+            window.open('https://drive.google.com/file/d/1xNaQVLTiMTLhSiD1b5vY73811-fUeO2n/view', '_blank');
+        }
+
+        // Enhanced loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Add ripple effect to buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    button.style.position = 'relative';
+                    button.style.overflow = 'hidden';
+                    button.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
