@@ -33,51 +33,142 @@
 
         /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem 1.5rem;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            backdrop-filter: blur(25px);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(64, 224, 208, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 50%, #40e0d0 100%);
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(64, 224, 208, 0.1) 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(30, 60, 114, 0.3);
-            padding: 6px;
+            box-shadow: 0 8px 30px rgba(30, 60, 114, 0.2);
+            padding: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .logo:hover::before {
+            left: 100%;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(30, 60, 114, 0.3);
         }
 
         .logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            transition: transform 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .logo:hover img {
+            transform: scale(1.1);
         }
 
         .company-info {
             flex: 1;
+            position: relative;
+            z-index: 1;
         }
 
         .company-name {
             color: #1e3c72;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
         }
 
         .company-subtitle {
             color: #2a5298;
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header-decoration {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(64, 224, 208, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header-decoration:nth-child(2) {
+            top: 50%;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(42, 82, 152, 0.1) 0%, transparent 70%);
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Main Content */
@@ -343,20 +434,26 @@
         /* Mobile Optimization */
         @media (max-width: 480px) {
             .header {
-                padding: 0.8rem 1rem;
+                padding: 1rem 1.5rem;
+                gap: 1rem;
             }
 
             .logo {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
+                padding: 6px;
             }
 
             .company-name {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             .company-subtitle {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .header-decoration {
+                display: none;
             }
 
             .main-content {
@@ -450,8 +547,10 @@
 <body>
     <!-- Header -->
     <header class="header">
+        <div class="header-decoration"></div>
+        <div class="header-decoration"></div>
         <div class="logo">
-            <img src="jasa-tirta-1-logo.png" alt="Jasa Tirta 1 Logo">
+            <img src="logo-jasa-tirta.png" alt="Jasa Tirta 1 Logo">
         </div>
         <div class="company-info">
             <h1 class="company-name">Jasa Tirta 1</h1>
