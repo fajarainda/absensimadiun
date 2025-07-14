@@ -13,12 +13,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #40e0d0 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #40e0d0 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             position: relative;
-            overflow-x: hidden;
         }
 
         body::before {
@@ -38,55 +35,32 @@
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 32px rgba(30, 60, 114, 0.3);
-            position: relative;
-            overflow: hidden;
-            padding: 8px;
+            box-shadow: 0 4px 20px rgba(30, 60, 114, 0.3);
+            padding: 6px;
         }
 
         .logo img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .logo:hover::before {
-            left: 100%;
         }
 
         .company-info {
@@ -95,28 +69,22 @@
 
         .company-name {
             color: #1e3c72;
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.2rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.1rem;
         }
 
         .company-subtitle {
             color: #2a5298;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
         /* Main Content */
         .main-content {
-            flex: 1;
-            padding: 2.5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            max-width: 1400px;
+            padding: 1.5rem;
+            max-width: 500px;
             margin: 0 auto;
-            width: 100%;
         }
 
         /* Welcome Section */
@@ -127,25 +95,23 @@
 
         .welcome-title {
             color: white;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .welcome-subtitle {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
-        /* Primary Buttons */
+        /* Primary Buttons Grid */
         .primary-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
@@ -153,65 +119,45 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border: none;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.8rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .primary-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05), rgba(64, 224, 208, 0.05));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .primary-button:hover::before {
-            opacity: 1;
         }
 
         .primary-button:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .primary-button:active {
-            transform: translateY(-4px) scale(0.98);
+            transform: translateY(-1px) scale(0.98);
         }
 
         .button-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .button-icon img {
-            width: 40px;
-            height: 40px;
+            width: 28px;
+            height: 28px;
             filter: brightness(0) invert(1);
-            transition: all 0.3s ease;
         }
 
-        .primary-button:hover .button-icon img {
+        .primary-button:hover .button-icon {
             transform: scale(1.1);
         }
 
@@ -222,39 +168,27 @@
 
         .button-text {
             color: #1e3c72;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         /* Secondary Section */
         .secondary-section {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .secondary-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1e3c72, #2a5298, #40e0d0);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
         }
 
         .secondary-title {
             color: #1e3c72;
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             text-align: center;
             position: relative;
         }
@@ -262,67 +196,51 @@
         .secondary-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 40px;
+            height: 2px;
             background: linear-gradient(90deg, #2a5298, #40e0d0);
             border-radius: 2px;
         }
 
         .secondary-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
         }
 
         .secondary-button {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #40e0d0 100%);
             border: none;
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            padding: 1rem 0.8rem;
             color: white;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(30, 60, 114, 0.3);
-        }
-
-        .secondary-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .secondary-button:hover::before {
-            left: 100%;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+            text-align: center;
         }
 
         .secondary-button:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(30, 60, 114, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
         }
 
         .secondary-button:active {
-            transform: translateY(-2px) scale(0.95);
+            transform: translateY(-1px) scale(0.98);
         }
 
         .secondary-button img {
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             filter: brightness(0) invert(1);
         }
 
@@ -331,60 +249,42 @@
             background: rgba(30, 60, 114, 0.95);
             backdrop-filter: blur(20px);
             color: white;
-            padding: 3rem 2rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #40e0d0, #2a5298, #1e3c72);
+            padding: 2rem 1.5rem 1.5rem;
+            text-align: center;
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 500px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
+        .footer h3 {
             color: #40e0d0;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
         }
 
-        .footer-section p {
-            margin-bottom: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            line-height: 1.6;
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            justify-content: center;
+            gap: 0.8rem;
             padding: 0.5rem;
             border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-item:hover {
             background: rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
 
         .contact-icon {
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             filter: brightness(0) invert(1);
         }
 
@@ -392,65 +292,44 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
-            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, #40e0d0, #2a5298);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-link:hover::before {
-            opacity: 1;
         }
 
         .social-link:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(64, 224, 208, 0.3);
+            background: rgba(64, 224, 208, 0.3);
+            transform: translateY(-2px);
         }
 
         .social-link img {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             filter: brightness(0) invert(1);
-            z-index: 1;
-            position: relative;
         }
 
         .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1rem;
         }
 
         /* Loading Animation */
         .loading {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             animation: fadeInUp 0.6s ease forwards;
         }
 
@@ -461,104 +340,109 @@
             }
         }
 
-        /* Responsive Design */
-                    @media (max-width: 768px) {
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
             .header {
-                padding: 1rem 1.5rem;
-                gap: 1rem;
+                padding: 0.8rem 1rem;
             }
 
             .logo {
-                width: 60px;
-                height: 60px;
-                padding: 6px;
+                width: 45px;
+                height: 45px;
             }
 
             .company-name {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
             }
 
             .company-subtitle {
-                font-size: 0.8rem;
-            }
-
-            .welcome-title {
-                font-size: 2rem;
-            }
-
-            .welcome-subtitle {
-                font-size: 1rem;
+                font-size: 0.75rem;
             }
 
             .main-content {
-                padding: 2rem 1.5rem;
-                gap: 2rem;
+                padding: 1rem;
+            }
+
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 0.85rem;
             }
 
             .primary-section {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
+                gap: 0.8rem;
             }
 
             .primary-button {
-                padding: 2rem 1.5rem;
+                padding: 1.2rem 0.8rem;
             }
 
             .button-icon {
-                width: 70px;
-                height: 70px;
+                width: 45px;
+                height: 45px;
             }
 
             .button-icon img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .button-text {
+                font-size: 0.8rem;
+            }
+
+            .secondary-section {
+                padding: 1.2rem;
+            }
+
+            .secondary-grid {
+                gap: 0.6rem;
+            }
+
+            .secondary-button {
+                padding: 0.8rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            .secondary-button img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .footer {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .contact-item {
+                font-size: 0.8rem;
+            }
+
+            .social-link {
                 width: 35px;
                 height: 35px;
             }
 
-            .secondary-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .secondary-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .secondary-button {
-                padding: 1.5rem;
-                font-size: 1rem;
-            }
-
-            .footer {
-                padding: 2rem 1.5rem 1.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .social-links {
-                gap: 0.8rem;
-            }
-
-            .social-link {
-                width: 45px;
-                height: 45px;
+            .social-link img {
+                width: 18px;
+                height: 18px;
             }
         }
 
-        @media (max-width: 480px) {
-            .primary-section {
-                grid-template-columns: 1fr;
+        /* Extra small screens */
+        @media (max-width: 320px) {
+            .primary-button {
+                padding: 1rem 0.5rem;
             }
 
-            .welcome-title {
-                font-size: 1.8rem;
+            .button-text {
+                font-size: 0.75rem;
             }
 
             .secondary-button {
-                padding: 1.2rem;
-                font-size: 0.9rem;
+                padding: 0.7rem 0.5rem;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -580,10 +464,10 @@
         <!-- Welcome Section -->
         <section class="welcome-section">
             <h2 class="welcome-title">Selamat Datang</h2>
-            <p class="welcome-subtitle">Sistem absensi digital yang modern dan efisien untuk kemudahan akses informasi perusahaan</p>
+            <p class="welcome-subtitle">Sistem absensi digital yang modern dan efisien</p>
         </section>
 
-        <!-- Primary Buttons Section -->
+        <!-- Primary Buttons Section (2x2 Grid) -->
         <section class="primary-section">
             <button class="primary-button loading" onclick="handleAttendance()" style="animation-delay: 0.1s">
                 <div class="button-icon icon-attendance">
@@ -614,7 +498,7 @@
             </button>
         </section>
 
-        <!-- Secondary Section -->
+        <!-- Secondary Section (2x2 Grid) -->
         <section class="secondary-section loading" style="animation-delay: 0.5s">
             <h2 class="secondary-title">Informasi Perusahaan</h2>
             <div class="secondary-grid">
@@ -641,50 +525,46 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>Kontak Bantuan Teknis</h3>
+            <h3>Kontak Bantuan Teknis</h3>
+            <div class="contact-info">
                 <div class="contact-item">
                     <img src="phone-icon.png" alt="Telepon" class="contact-icon">
-                    <p>(0341) 551976</p>
+                    <span>(0341) 551976</span>
                 </div>
                 <div class="contact-item">
                     <img src="email-icon.png" alt="Email" class="contact-icon">
-                    <p>it-support@jasatirta1.co.id</p>
+                    <span>it-support@jasatirta1.co.id</span>
                 </div>
                 <div class="contact-item">
                     <img src="clock-icon.png" alt="Jam Kerja" class="contact-icon">
-                    <p>Senin - Jumat, 08:00 - 16:00 WIB</p>
+                    <span>Senin - Jumat, 08:00 - 16:00 WIB</span>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Sosial Media</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <img src="facebook-icon.png" alt="Facebook">
-                    </a>
-                    <a href="#" class="social-link">
-                        <img src="instagram-icon.png" alt="Instagram">
-                    </a>
-                    <a href="#" class="social-link">
-                        <img src="twitter-icon.png" alt="Twitter">
-                    </a>
-                    <a href="#" class="social-link">
-                        <img src="linkedin-icon.png" alt="LinkedIn">
-                    </a>
-                </div>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <img src="facebook-icon.png" alt="Facebook">
+                </a>
+                <a href="#" class="social-link">
+                    <img src="instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="#" class="social-link">
+                    <img src="twitter-icon.png" alt="Twitter">
+                </a>
+                <a href="#" class="social-link">
+                    <img src="linkedin-icon.png" alt="LinkedIn">
+                </a>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Jasa Tirta 1. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jasa Tirta 1. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Button handlers - Ganti URL sesuai kebutuhan
+        // Button handlers
         function handleAttendance() {
-            // Add loading state
             const button = event.target.closest('.primary-button');
             if (button) {
                 button.style.transform = 'scale(0.95)';
@@ -693,14 +573,10 @@
                 }, 150);
             }
             
-            // Ganti URL ini dengan halaman daftar hadir
             const attendanceUrl = 'https://fajarainda.github.io/absensi/';
-            console.log('Membuka:', attendanceUrl); // Debug log
+            console.log('Membuka:', attendanceUrl);
             
-            // Coba buka di tab baru
             const newWindow = window.open(attendanceUrl, '_blank');
-            
-            // Fallback jika popup diblokir
             if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
                 alert('Popup diblokir! Mengalihkan ke halaman daftar hadir...');
                 window.location.href = attendanceUrl;
@@ -716,7 +592,6 @@
                 }, 150);
             }
             
-            // Ganti URL ini dengan halaman informasi WiFi
             const wifiUrl = 'https://absensi.jasatirta1.co.id/wifi-info';
             console.log('Membuka:', wifiUrl);
             
@@ -736,7 +611,6 @@
                 }, 150);
             }
             
-            // Ganti URL ini dengan halaman safety induction
             const safetyUrl = 'https://absensi.jasatirta1.co.id/safety-induction';
             console.log('Membuka:', safetyUrl);
             
@@ -756,7 +630,6 @@
                 }, 150);
             }
             
-            // Ganti URL ini dengan halaman jalur evakuasi
             const evacuationUrl = 'https://absensi.jasatirta1.co.id/jalur-evakuasi';
             console.log('Membuka:', evacuationUrl);
             
@@ -768,7 +641,6 @@
         }
 
         function handleOfficialWeb() {
-            // Membuka website resmi Jasa Tirta 1
             const officialUrl = 'https://jasatirta1.co.id';
             console.log('Membuka:', officialUrl);
             
@@ -779,7 +651,6 @@
         }
 
         function handleVisiMisi() {
-            // Ganti URL ini dengan halaman visi misi
             const visiUrl = 'https://jasatirta1.co.id/visi-misi';
             console.log('Membuka:', visiUrl);
             
@@ -790,7 +661,6 @@
         }
 
         function handleKebijakan() {
-            // Ganti URL ini dengan halaman kebijakan
             const kebijakanUrl = 'https://jasatirta1.co.id/kebijakan';
             console.log('Membuka:', kebijakanUrl);
             
@@ -801,7 +671,6 @@
         }
 
         function handleSertifikat() {
-            // Ganti URL ini dengan halaman sertifikat ISO
             const sertifikatUrl = 'https://jasatirta1.co.id/sertifikat-iso';
             console.log('Membuka:', sertifikatUrl);
             
@@ -813,10 +682,8 @@
 
         // Enhanced loading animation
         document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth scroll behavior
             document.documentElement.style.scrollBehavior = 'smooth';
             
-            // Add ripple effect to buttons
             const buttons = document.querySelectorAll('button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
@@ -831,7 +698,7 @@
                     ripple.style.top = y + 'px';
                     ripple.style.position = 'absolute';
                     ripple.style.borderRadius = '50%';
-                    ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.3)';
                     ripple.style.transform = 'scale(0)';
                     ripple.style.animation = 'ripple 0.6s linear';
                     ripple.style.pointerEvents = 'none';
