@@ -567,7 +567,7 @@
     <!-- Header -->
     <header class="header">
         <div class="logo">
-            <img src="logo-jasa-tirta.png" alt="Jasa Tirta 1 Logo">
+            <img src="jasa-tirta-1-logo.png" alt="Jasa Tirta 1 Logo">
         </div>
         <div class="company-info">
             <h1 class="company-name">Jasa Tirta 1</h1>
@@ -644,16 +644,16 @@
             <div class="footer-section">
                 <h3>Kontak Bantuan Teknis</h3>
                 <div class="contact-item">
-                    <img src="phone.svg" alt="Telepon" class="contact-icon">
+                    <img src="phone-icon.png" alt="Telepon" class="contact-icon">
                     <p>(0341) 551976</p>
                 </div>
                 <div class="contact-item">
-                    <img src="gnail.svg" alt="Email" class="contact-icon">
+                    <img src="email-icon.png" alt="Email" class="contact-icon">
                     <p>it-support@jasatirta1.co.id</p>
                 </div>
                 <div class="contact-item">
-                    <img src="whatsapp.svg" alt="Jam Kerja" class="contact-icon">
-                    <p>085888421865</p>
+                    <img src="clock-icon.png" alt="Jam Kerja" class="contact-icon">
+                    <p>Senin - Jumat, 08:00 - 16:00 WIB</p>
                 </div>
             </div>
             
@@ -661,16 +661,16 @@
                 <h3>Sosial Media</h3>
                 <div class="social-links">
                     <a href="#" class="social-link">
-                        <img src="facebook.svg" alt="Facebook">
+                        <img src="facebook-icon.png" alt="Facebook">
                     </a>
                     <a href="#" class="social-link">
-                        <img src="instagram.svg" alt="Instagram">
+                        <img src="instagram-icon.png" alt="Instagram">
                     </a>
                     <a href="#" class="social-link">
-                        <img src="twitter.svg" alt="Twitter">
+                        <img src="twitter-icon.png" alt="Twitter">
                     </a>
                     <a href="#" class="social-link">
-                        <img src="youtube.svg" alt="LinkedIn">
+                        <img src="linkedin-icon.png" alt="LinkedIn">
                     </a>
                 </div>
             </div>
@@ -685,60 +685,130 @@
         // Button handlers - Ganti URL sesuai kebutuhan
         function handleAttendance() {
             // Add loading state
-            event.target.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-                // Ganti URL ini dengan halaman daftar hadir
-                window.location.href('https://fajarainda.github.io/absensi/', '_blank');
-                // atau untuk membuka di tab yang sama: window.location.href = 'URL_ANDA';
-            }, 150);
+            const button = event.target.closest('.primary-button');
+            if (button) {
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 150);
+            }
+            
+            // Ganti URL ini dengan halaman daftar hadir
+            const attendanceUrl = 'https://absensi.jasatirta1.co.id/daftar-hadir';
+            console.log('Membuka:', attendanceUrl); // Debug log
+            
+            // Coba buka di tab baru
+            const newWindow = window.open(attendanceUrl, '_blank');
+            
+            // Fallback jika popup diblokir
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                alert('Popup diblokir! Mengalihkan ke halaman daftar hadir...');
+                window.location.href = attendanceUrl;
+            }
         }
 
         function handleWifiInfo() {
-            event.target.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-                // Ganti URL ini dengan halaman informasi WiFi
-                window.open('https://fajarainda.github.io/password_wifi/', '_blank');
-            }, 150);
+            const button = event.target.closest('.primary-button');
+            if (button) {
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 150);
+            }
+            
+            // Ganti URL ini dengan halaman informasi WiFi
+            const wifiUrl = 'https://absensi.jasatirta1.co.id/wifi-info';
+            console.log('Membuka:', wifiUrl);
+            
+            const newWindow = window.open(wifiUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                alert('Popup diblokir! Mengalihkan ke halaman WiFi...');
+                window.location.href = wifiUrl;
+            }
         }
 
         function handleSafetyInduction() {
-            event.target.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-                // Ganti URL ini dengan halaman safety induction
-                window.open('https://drive.google.com/file/d/11Fa2QjmtUhamLnRE4AZp-nRhKGivzyYp/view?usp=sharing', '_blank');
-            }, 150);
+            const button = event.target.closest('.primary-button');
+            if (button) {
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 150);
+            }
+            
+            // Ganti URL ini dengan halaman safety induction
+            const safetyUrl = 'https://absensi.jasatirta1.co.id/safety-induction';
+            console.log('Membuka:', safetyUrl);
+            
+            const newWindow = window.open(safetyUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                alert('Popup diblokir! Mengalihkan ke halaman Safety Induction...');
+                window.location.href = safetyUrl;
+            }
         }
 
         function handleEvacuation() {
-            event.target.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-                // Ganti URL ini dengan halaman jalur evakuasi
-                window.open('https://drive.google.com/file/d/1LIIYC7aIHPNN9QCkCvC2DAIQ4F9JmaAB/view?usp=sharing', '_blank');
-            }, 150);
+            const button = event.target.closest('.primary-button');
+            if (button) {
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 150);
+            }
+            
+            // Ganti URL ini dengan halaman jalur evakuasi
+            const evacuationUrl = 'https://absensi.jasatirta1.co.id/jalur-evakuasi';
+            console.log('Membuka:', evacuationUrl);
+            
+            const newWindow = window.open(evacuationUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                alert('Popup diblokir! Mengalihkan ke halaman Jalur Evakuasi...');
+                window.location.href = evacuationUrl;
+            }
         }
 
         function handleOfficialWeb() {
             // Membuka website resmi Jasa Tirta 1
-            window.open('https://jasatirta1.co.id', '_blank');
+            const officialUrl = 'https://jasatirta1.co.id';
+            console.log('Membuka:', officialUrl);
+            
+            const newWindow = window.open(officialUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                window.location.href = officialUrl;
+            }
         }
 
         function handleVisiMisi() {
             // Ganti URL ini dengan halaman visi misi
-            window.open('https://drive.google.com/file/d/1rixZlY5BLpjcyPFVuxtVi6O1nUPUkW2c/view', '_blank');
+            const visiUrl = 'https://jasatirta1.co.id/visi-misi';
+            console.log('Membuka:', visiUrl);
+            
+            const newWindow = window.open(visiUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                window.location.href = visiUrl;
+            }
         }
 
         function handleKebijakan() {
             // Ganti URL ini dengan halaman kebijakan
-            window.open('https://drive.google.com/file/d/1TlHOKPWVO9Jz43utrT_LLgU9QWrDtilP/view', '_blank');
+            const kebijakanUrl = 'https://jasatirta1.co.id/kebijakan';
+            console.log('Membuka:', kebijakanUrl);
+            
+            const newWindow = window.open(kebijakanUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                window.location.href = kebijakanUrl;
+            }
         }
 
         function handleSertifikat() {
             // Ganti URL ini dengan halaman sertifikat ISO
-            window.open('https://drive.google.com/file/d/1xNaQVLTiMTLhSiD1b5vY73811-fUeO2n/view', '_blank');
+            const sertifikatUrl = 'https://jasatirta1.co.id/sertifikat-iso';
+            console.log('Membuka:', sertifikatUrl);
+            
+            const newWindow = window.open(sertifikatUrl, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                window.location.href = sertifikatUrl;
+            }
         }
 
         // Enhanced loading animation
